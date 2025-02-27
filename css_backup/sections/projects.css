@@ -1,0 +1,146 @@
+/* Projects Section Styles */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--secondary);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 600px; /* Fixed height for all cards */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-link {
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+}
+
+.project-card-link:hover .project-card {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 255, 157, 0.3);
+}
+
+.project-card-link::before {
+    content: 'Play Game';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    font-size: 1rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.project-card-link:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card-link:hover .project-card::before {
+    opacity: 0.1;
+}
+
+.project-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* Increased from 5 to 6 lines */
+    -webkit-box-orient: vertical;
+    flex: 1;
+    font-size: 0.9rem; /* Reduced font size */
+    line-height: 1.4; /* Adjusted line height for better readability */
+}
+
+/* Web Projects Styles */
+.web-card-link {
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+}
+
+.web-card-link:hover .project-card {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 255, 157, 0.3);
+}
+
+.web-card-link::before {
+    content: 'Visit Website';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    font-size: 1rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.web-card-link:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.web-card-link:hover .project-card::before {
+    opacity: 0.1;
+}
+
+/* Responsive Projects */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card {
+        height: 550px; /* Slightly shorter on mobile */
+    }
+} 

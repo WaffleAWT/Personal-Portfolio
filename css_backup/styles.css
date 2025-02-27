@@ -1,0 +1,19 @@
+/* Main Stylesheet - Imports all component stylesheets */
+
+/* Base Styles */
+@import url('base/reset.css');
+
+/* Components */
+@import url('components/navigation.css');
+@import url('components/audio-player.css');
+@import url('components/footer.css');
+
+/* Sections */
+@import url('sections/hero.css');
+@import url('sections/about.css');
+@import url('sections/tools.css');
+@import url('sections/projects.css');
+@import url('sections/music.css');
+@import url('sections/web.css');
+@import url('sections/services.css');
+@import url('sections/contact.css'); 

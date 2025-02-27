@@ -1,0 +1,130 @@
+/* Tools Section Styles */
+.tools-section {
+    background: var(--primary);
+    position: relative;
+}
+
+.tools-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(0, 255, 157, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 60%);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tool-card {
+    background: var(--secondary);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tool-card-link {
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.tool-card-link:hover .tool-card {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 255, 157, 0.3);
+}
+
+.tool-card-link::before {
+    content: 'Visit Site';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    font-size: 0.8rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.tool-card-link:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tool-card-link:hover .tool-card::before {
+    opacity: 0.1;
+}
+
+.tool-card i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tool-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tool-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.tool-card img.wide {
+    width: 100px;
+    height: 50px;
+}
+
+/* Responsive Tools Grid */
+@media (max-width: 1024px) {
+    .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+} 

@@ -1,0 +1,356 @@
+/* Floating Shapes Animation */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.12;
+    animation: float 15s linear infinite;
+}
+
+/* Solid shapes */
+.shape.square {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 4px;
+    transform: rotate(45deg);
+}
+
+.shape.circle {
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+.shape.triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 45px solid var(--accent);
+}
+
+/* Hollow shapes */
+.shape.square.hollow {
+    background: transparent;
+    border: 3px solid var(--accent);
+}
+
+.shape.circle.hollow {
+    background: transparent;
+    border: 3px solid var(--accent);
+}
+
+.shape.triangle.hollow {
+    background: transparent;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 45px solid transparent;
+    position: relative;
+}
+
+.shape.triangle.hollow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -25px;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 45px solid var(--accent);
+    z-index: -1;
+}
+
+.shape.triangle.hollow::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 38px solid var(--primary);
+    z-index: 1;
+}
+
+/* Different sizes */
+.shape.small {
+    transform: scale(0.5);
+}
+
+.shape.medium {
+    transform: scale(0.75);
+}
+
+.shape.large {
+    transform: scale(1);
+}
+
+/* Different speeds */
+.shape.slow {
+    animation-duration: 25s;
+}
+
+.shape.normal {
+    animation-duration: 20s;
+}
+
+.shape.fast {
+    animation-duration: 15s;
+}
+
+/* Different directions */
+.shape.direction-1 {
+    animation-name: float-1;
+}
+
+.shape.direction-2 {
+    animation-name: float-2;
+}
+
+.shape.direction-3 {
+    animation-name: float-3;
+}
+
+.shape.direction-4 {
+    animation-name: float-4;
+}
+
+.shape.direction-5 {
+    animation-name: float-5;
+}
+
+/* Animation keyframes for different movement patterns */
+@keyframes float-1 {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.12;
+    }
+    90% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: translate(100px, -100px) rotate(360deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+}
+
+@keyframes float-2 {
+    0% {
+        transform: translate(100%, 0) rotate(0deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.12;
+    }
+    90% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: translate(0, 100%) rotate(-360deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+}
+
+@keyframes float-3 {
+    0% {
+        transform: translate(0, 100%) rotate(0deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.12;
+    }
+    90% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: translate(100%, 0) rotate(360deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+}
+
+@keyframes float-4 {
+    0% {
+        transform: translate(50%, 0) rotate(0deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.12;
+    }
+    90% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: translate(0, -50%) rotate(180deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+}
+
+@keyframes float-5 {
+    0% {
+        transform: translate(-50px, -50px) rotate(0deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.12;
+    }
+    90% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: translate(50px, 50px) rotate(-180deg) scale(var(--scale, 1));
+        opacity: 0;
+    }
+}
+
+/* Specific section adjustments */
+#about .shape {
+    --scale: 0.8;
+    opacity: 0.1;
+}
+
+#projects .shape {
+    --scale: 0.9;
+    opacity: 0.09;
+}
+
+#web .shape {
+    --scale: 0.75;
+    opacity: 0.1;
+}
+
+#contact .shape {
+    --scale: 0.7;
+    opacity: 0.11;
+}
+
+/* Hollow shapes need slightly higher opacity */
+.shape.hollow {
+    opacity: 0.15;
+}
+
+#about .shape.hollow {
+    opacity: 0.13;
+}
+
+#projects .shape.hollow {
+    opacity: 0.12;
+}
+
+#web .shape.hollow {
+    opacity: 0.13;
+}
+
+#contact .shape.hollow {
+    opacity: 0.14;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .shape {
+        opacity: 0.09;
+    }
+    
+    .shape.hollow {
+        opacity: 0.12;
+    }
+    
+    .shape.square {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .shape.circle {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .shape.triangle {
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 35px solid var(--accent);
+    }
+    
+    .shape.square.hollow,
+    .shape.circle.hollow {
+        border-width: 2px;
+    }
+    
+    .shape.triangle.hollow::after {
+        top: 0;
+        left: -20px;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 35px solid var(--accent);
+    }
+    
+    .shape.triangle.hollow::before {
+        top: 3px;
+        left: -16px;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-bottom: 28px solid var(--primary);
+    }
+}
+
+@media (max-width: 480px) {
+    .shape {
+        opacity: 0.07;
+    }
+    
+    .shape.hollow {
+        opacity: 0.1;
+    }
+    
+    .shape.square {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .shape.circle {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .shape.triangle {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 25px solid var(--accent);
+    }
+    
+    .shape.square.hollow,
+    .shape.circle.hollow {
+        border-width: 2px;
+    }
+    
+    .shape.triangle.hollow::after {
+        top: 0;
+        left: -15px;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 25px solid var(--accent);
+    }
+    
+    .shape.triangle.hollow::before {
+        top: 2px;
+        left: -12px;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 20px solid var(--primary);
+    }
+} 

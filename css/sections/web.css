@@ -1,0 +1,243 @@
+/* Web Projects Section Styles */
+#web {
+    background: var(--primary);
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Web-specific button styling */
+#web .project-link {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+}
+
+#web .project-link:hover {
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 157, 0.4);
+}
+
+/* Web card link styling */
+.web-card-link {
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+}
+
+.web-card-link:hover .project-card {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 255, 157, 0.3);
+    border-color: rgba(0, 255, 157, 0.3);
+}
+
+.web-card-link::before {
+    content: 'Visit Website';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    font-size: 0.9rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.web-card-link:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Web project cards styling */
+#web .project-card {
+    border-top: 3px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#web .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#web .web-card-link:hover .project-card::before {
+    opacity: 0.1;
+}
+
+#web .project-content {
+    padding-bottom: 30px; /* Add space for the hover text */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#web .project-description {
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Equal height grid items */
+#web .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    grid-auto-rows: 1fr;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    #web {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+    
+    #web .project-card {
+        padding: 1.5rem;
+        min-height: 550px; /* Match the game cards height */
+    }
+    
+    #web .project-image {
+        height: 220px;
+    }
+    
+    #web .project-description {
+        font-size: 0.85rem;
+        line-height: 1.35;
+        -webkit-line-clamp: 9; /* Increased to match game cards */
+        margin-bottom: 1.2rem;
+    }
+    
+    #web .project-content {
+        padding-bottom: 25px;
+    }
+    
+    .web-card-link::before {
+        font-size: 0.85rem;
+        bottom: 15px;
+    }
+    
+    #web .project-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #web {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    #web .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on iPad */
+        gap: 1.2rem;
+    }
+    
+    #web .project-card {
+        padding: 1.2rem;
+        border-top-width: 2px;
+        border-radius: 15px;
+        min-height: 500px; /* Match the game cards height */
+    }
+    
+    #web .project-image {
+        height: 180px;
+        margin-bottom: 0.7rem;
+    }
+    
+    #web .project-description {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        -webkit-line-clamp: 10; /* Increased to match game cards */
+        margin-bottom: 1rem;
+    }
+    
+    #web .project-content {
+        padding-bottom: 20px;
+    }
+    
+    #web .project-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .web-card-link::before {
+        font-size: 0.8rem;
+        bottom: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    #web .projects-grid {
+        grid-template-columns: 1fr; /* Single column for smaller devices */
+        gap: 1.2rem;
+    }
+    
+    #web .project-card {
+        min-height: 420px; /* Match the game cards height */
+    }
+}
+
+@media (max-width: 480px) {
+    #web {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    
+    #web .projects-grid {
+        gap: 1rem;
+    }
+    
+    #web .project-card {
+        padding: 1rem;
+        border-radius: 12px;
+        min-height: 400px; /* Match the game cards height */
+    }
+    
+    #web .project-image {
+        height: 160px;
+        margin-bottom: 0.6rem;
+        border-radius: 8px;
+    }
+    
+    #web .project-description {
+        font-size: 0.75rem;
+        line-height: 1.25;
+        -webkit-line-clamp: 7;
+        margin-bottom: 0.8rem;
+    }
+    
+    #web .project-content {
+        padding-bottom: 18px;
+    }
+    
+    #web .project-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .web-card-link::before {
+        font-size: 0.75rem;
+        bottom: 10px;
+    }
+} 

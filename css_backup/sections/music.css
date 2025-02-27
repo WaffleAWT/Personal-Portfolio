@@ -1,0 +1,125 @@
+/* Music Section Styles */
+.music-section {
+    background: var(--primary);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+.music-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(0, 255, 157, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(0, 255, 157, 0.08) 0%, transparent 60%);
+    z-index: 1;
+}
+
+.music-section .container {
+    max-width: 1300px;
+    position: relative;
+    z-index: 2;
+}
+
+.music-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+}
+
+.music-player {
+    background: var(--secondary);
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    min-height: 100px;
+    gap: 1.5rem;
+}
+
+.music-player h3 {
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    min-width: 150px;
+    flex: 0 0 auto;
+    color: var(--accent);
+}
+
+.music-player::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 50%);
+    opacity: 0.1;
+    animation: rotate 20s linear infinite;
+}
+
+.visualizer {
+    height: 40px;
+    gap: 3px;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 0;
+    width: 100px;
+    flex: 0 0 auto;
+}
+
+.visualizer-bar {
+    width: 3px;
+    background: var(--accent);
+    height: 100%;
+    animation: visualize 1.2s ease infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(0, 255, 157, 0.3);
+}
+
+@keyframes visualize {
+    0%, 100% { height: 15%; opacity: 0.6; }
+    50% { height: 100%; opacity: 1; }
+}
+
+/* Responsive Music Section */
+@media (max-width: 1024px) {
+    .music-container {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+    
+    .music-player {
+        flex-direction: column;
+        padding: 1.5rem;
+        min-height: 180px;
+        gap: 1rem;
+    }
+    
+    .music-player h3 {
+        text-align: center;
+        margin-bottom: 0.5rem;
+        min-width: auto;
+    }
+    
+    .visualizer {
+        width: 80%;
+        margin-top: 0.5rem;
+    }
+} 

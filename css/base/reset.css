@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --primary: #0a0a0a;
+    --secondary: #1a1a1a;
+    --accent: #00ff9d;
+    --accent-dark: #00cc7d;
+    --text: #ffffff;
+    --text-secondary: #b3b3b3;
+    --vh: 1vh;
+}
+
+html {
+    scroll-behavior: smooth; /* Keep smooth scrolling but remove snap */
+    touch-action: pan-y;
+}
+
+body {
+    background-color: var(--primary);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+section {
+    min-height: 100vh; /* Fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make the last section (contact) shorter to allow room for footer */
+#contact {
+    min-height: calc(100vh - 80px); /* Fallback */
+    min-height: calc((var(--vh, 1vh) * 100) - 80px);
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Footer specific styles to override section defaults */
+.footer {
+    min-height: auto;
+    padding: 0;
+    position: relative;
+    margin-top: -80px;
+}
+
+/* Class to disable scroll snap on any element - no longer needed but kept for compatibility */
+.no-snap {
+    /* Removed scroll-snap-align property */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--text);
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    padding: 1rem 2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 255, 157, 0.2);
+}
+
+/* Touch feedback effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:active::after {
+    opacity: 0.3;
+    animation: ripple 0.5s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0) translate(-50%, -50%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    section {
+        padding: 1.5rem;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    section {
+        min-height: -webkit-fill-available;
+    }
+    
+    #contact {
+        min-height: calc(-webkit-fill-available - 80px);
+    }
+} 

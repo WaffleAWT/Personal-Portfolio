@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WaffleAWT</title>
+    <link rel="icon" href="Assets/Logo.png" type="image/png">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" as="style">
+    <link rel="preload" href="Assets/Logo.png" as="image">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="WaffleAWT - Game Developer & Music Producer. Explore my portfolio of games, music, and web projects.">
+    <meta name="keywords" content="game development, music production, web development, portfolio, WaffleAWT">
+    <meta name="author" content="WaffleAWT">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo-link">
+                <img src="Assets/Logo.png" alt="WaffleAWT Logo" class="nav-logo">
+            </a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#projects">Games</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#web">Web</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="overlay"></div>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>WaffleAWT</h1>
+            <p>Programmer & Music Producer</p>
+            <p>Welcome to my portfolio! Explore my projects, music, and get in touch.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Projects</a>
+                <a href="#music" class="btn">Listen to My Music</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="floating-shapes">
+            <div class="shape square small direction-1" style="top: 15%; left: 10%;"></div>
+            <div class="shape circle medium direction-2 hollow" style="top: 60%; left: 20%;"></div>
+            <div class="shape triangle large direction-3" style="top: 30%; left: 80%;"></div>
+            <div class="shape square medium direction-2 hollow" style="top: 70%; left: 70%;"></div>
+            <div class="shape circle small direction-1" style="top: 20%; left: 40%;"></div>
+            <div class="shape square large direction-3 hollow" style="top: 5%; left: 25%;"></div>
+            <div class="shape circle small direction-1 hollow" style="top: 45%; left: 15%;"></div>
+            <div class="shape triangle medium direction-2" style="top: 55%; left: 55%;"></div>
+            <div class="shape square small direction-4 hollow" style="top: 25%; left: 65%;"></div>
+            <div class="shape circle large direction-5" style="top: 75%; left: 35%;"></div>
+            <div class="shape triangle small direction-4 hollow" style="top: 10%; left: 50%;"></div>
+            <div class="shape square medium direction-5" style="top: 40%; left: 85%;"></div>
+            <div class="shape circle medium direction-3 hollow" style="top: 85%; left: 60%;"></div>
+            <div class="shape triangle large direction-4" style="top: 35%; left: 30%;"></div>
+            <div class="shape square large direction-5 hollow" style="top: 50%; left: 75%;"></div>
+            <div class="shape circle small direction-3" style="top: 80%; left: 90%;"></div>
+            <div class="shape triangle medium direction-4 hollow" style="top: 15%; left: 5%;"></div>
+            <div class="shape square small direction-5" style="top: 65%; left: 45%;"></div>
+            <div class="shape circle large direction-3 hollow" style="top: 30%; left: 95%;"></div>
+            <div class="shape triangle small direction-1" style="top: 90%; left: 25%;"></div>
+        </div>
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Ali (known as WaffleAWT), a passionate and self-taught game developer based in Jordan with years of experience crafting games from concept to completion. I started with GameMaker and transitioned to Godot, where I build immersive experiences across genres — from atmospheric horror to fast-paced FPS. I excel in creating interconnected game systems, multiplayer functionality, and rich ecosystems.</p>
+                    <br>
+                    <p>Beyond development, I produce original soundtracks and sound effects in FL Studio, adding life to every project with carefully crafted music. My skill set spans programming, 3D modeling, pixel art, and animation, allowing me to bring creative visions to life independently or as part of a team.</p>
+                    <br>
+                    <p>I'm now focused on releasing my first commercial title, sharing my knowledge through game development tutorials, and continuing to explore new ways to push my creative boundaries.</p>
+                    <br>
+                    <p>Let's build something amazing!</p>
+                </div>
+                <div class="about-image">
+                    <img src="Assets/Main.png" alt="Animated Game Development">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2>My Toolset</h2>
+            <div class="tools-grid">
+                <a href="https://godotengine.org/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Godot.png" alt="Godot">
+                        <h3>Godot</h3>
+                        <p>Game Engine</p>
+                    </div>
+                </a>
+                <a href="https://krita.org/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Krita.png" alt="Krita">
+                        <h3>Krita</h3>
+                        <p>Digital Art & Illustration</p>
+                    </div>
+                </a>
+                <a href="https://www.gimp.org/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Gimp.png" alt="GIMP">
+                        <h3>GIMP</h3>
+                        <p>Texture Packing</p>
+                    </div>
+                </a>
+                <a href="https://www.aseprite.org/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Aseprite.png" alt="Aseprite">
+                        <h3>Aseprite</h3>
+                        <p>Pixel Art & Animation</p>
+                    </div>
+                </a>
+                <a href="https://obsidian.md/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Obsidian.png" alt="Obsidian">
+                        <h3>Obsidian</h3>
+                        <p>Project Management</p>
+                    </div>
+                </a>
+                <a href="https://armorpaint.org/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Armor Paint.png" alt="Armor Paint">
+                        <h3>Armor Paint</h3>
+                        <p>3D Asset Painting</p>
+                    </div>
+                </a>
+                <a href="https://www.blender.org/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Blender.png" alt="Blender">
+                        <h3>Blender</h3>
+                        <p>3D Modeling & Animation</p>
+                    </div>
+                </a>
+                <a href="https://www.image-line.com/fl-studio/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/FL Studio.png" alt="FL Studio">
+                        <h3>FL Studio</h3>
+                        <p>Music Production</p>
+                    </div>
+                </a>
+                <a href="http://boundingboxsoftware.com/materialize/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Materialize.png" alt="Materialize">
+                        <h3>Materialize</h3>
+                        <p>Image To Texture</p>
+                    </div>
+                </a>
+                <a href="https://github.com/RodZill4/material-maker" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Material Maker.png" alt="Material Maker">
+                        <h3>Material Maker</h3>
+                        <p>Procedual Textures</p>
+                    </div>
+                </a>
+                <a href="https://www.cursor.com" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Cursor.png" alt="Chiptone">
+                        <h3>Cursor</h3>
+                        <p>IDE</p>
+                    </div>
+                </a>
+                <a href="https://github.com/" target="_blank" class="tool-card-link">
+                    <div class="tool-card">
+                        <img src="Assets/Github.png" alt="Github">
+                        <h3>Github</h3>
+                        <p>Version Control</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="floating-shapes">
+            <div class="shape square medium direction-3 hollow" style="top: 10%; left: 15%;"></div>
+            <div class="shape circle large direction-1" style="top: 50%; left: 5%;"></div>
+            <div class="shape triangle small direction-2 hollow" style="top: 25%; left: 75%;"></div>
+            <div class="shape square large direction-1" style="top: 65%; left: 85%;"></div>
+            <div class="shape circle medium direction-3 hollow" style="top: 40%; left: 45%;"></div>
+            <div class="shape square small direction-4" style="top: 5%; left: 35%;"></div>
+            <div class="shape circle medium direction-5 hollow" style="top: 30%; left: 25%;"></div>
+            <div class="shape triangle large direction-4" style="top: 70%; left: 65%;"></div>
+            <div class="shape square medium direction-5 hollow" style="top: 20%; left: 55%;"></div>
+            <div class="shape circle small direction-4" style="top: 60%; left: 30%;"></div>
+            <div class="shape triangle medium direction-5 hollow" style="top: 15%; left: 90%;"></div>
+            <div class="shape square large direction-4" style="top: 45%; left: 70%;"></div>
+            <div class="shape circle large direction-5 hollow" style="top: 80%; left: 10%;"></div>
+            <div class="shape triangle small direction-3" style="top: 35%; left: 40%;"></div>
+            <div class="shape square small direction-1" style="top: 75%; left: 50%;"></div>
+            <div class="shape circle medium direction-2" style="top: 55%; left: 95%;"></div>
+            <div class="shape triangle large direction-1" style="top: 90%; left: 20%;"></div>
+            <div class="shape square medium direction-3" style="top: 25%; left: 3%;"></div>
+            <div class="shape circle small direction-2" style="top: 85%; left: 75%;"></div>
+            <div class="shape triangle medium direction-1" style="top: 5%; left: 60%;"></div>
+        </div>
+        <div class="container">
+            <h2>Featured Games</h2>
+            <div class="projects-grid">
+                <a href="https://waffleawt.itch.io/inside-khyos-ep1-family-from-hell" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="Assets/Inside Khyos.jpg" alt="Project 1" class="project-image">
+                            <h3>Inside Khyos</h3>
+                            <p>Episodic Horror</p><br>
+                            <p class="project-description">Step into the life of Adam, a man grappling with unbearable loss. In this episodic horror game, a tragic day unravels events that challenge his reality. As Adam returns home, the boundaries between sanity and madness blur, leading to harrowing consequences.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://waffleawt.itch.io/nocturnal-nicotine" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="Assets/Nocturnal Nicotine.png" alt="Project 2" class="project-image">
+                            <h3>Nocturnal Nicotine</h3>
+                            <p>PSX Horror</p><br>
+                            <p class="project-description">You are thrust into the heart of a dark and perilous night as they embark on a seemingly innocent quest for a pack of cigarettes. However, what starts as a mundane errand quickly descends into a heart-pounding pursuit as they unwittingly attract the attention of the dark!
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="music" class="music-section">
+        <div class="container">
+            <h2>Music Production</h2>
+            <div class="music-container">
+                <div class="music-player">
+                    <h3>Inside Khyos</h3>
+                    <div class="custom-audio-player">
+                        <audio class="audio-element" preload="metadata">
+                            <source src="Assets/Inside Khyos.wav" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="player-controls">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <div class="timeline-container">
+                                <div class="timeline">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time">
+                                    <span class="current">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visualizer">
+                        <div class="visualizer-bar" style="--i:0;"></div>
+                        <div class="visualizer-bar" style="--i:1;"></div>
+                        <div class="visualizer-bar" style="--i:2;"></div>
+                        <div class="visualizer-bar" style="--i:3;"></div>
+                        <div class="visualizer-bar" style="--i:4;"></div>
+                        <div class="visualizer-bar" style="--i:5;"></div>
+                        <div class="visualizer-bar" style="--i:6;"></div>
+                        <div class="visualizer-bar" style="--i:7;"></div>
+                    </div>
+                </div>
+                
+                <div class="music-player">
+                    <h3>Broken Bonds</h3>
+                    <div class="custom-audio-player">
+                        <audio class="audio-element" preload="metadata">
+                            <source src="Assets/Broken Bonds.wav" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="player-controls">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <div class="timeline-container">
+                                <div class="timeline">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time">
+                                    <span class="current">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visualizer">
+                        <div class="visualizer-bar" style="--i:0;"></div>
+                        <div class="visualizer-bar" style="--i:1;"></div>
+                        <div class="visualizer-bar" style="--i:2;"></div>
+                        <div class="visualizer-bar" style="--i:3;"></div>
+                        <div class="visualizer-bar" style="--i:4;"></div>
+                        <div class="visualizer-bar" style="--i:5;"></div>
+                        <div class="visualizer-bar" style="--i:6;"></div>
+                        <div class="visualizer-bar" style="--i:7;"></div>
+                    </div>
+                </div>
+                
+                <div class="music-player">
+                    <h3>Fairooz Fusion</h3>
+                    <div class="custom-audio-player">
+                        <audio class="audio-element" preload="metadata">
+                            <source src="Assets/Fairooz Fusion.wav" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="player-controls">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <div class="timeline-container">
+                                <div class="timeline">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time">
+                                    <span class="current">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visualizer">
+                        <div class="visualizer-bar" style="--i:0;"></div>
+                        <div class="visualizer-bar" style="--i:1;"></div>
+                        <div class="visualizer-bar" style="--i:2;"></div>
+                        <div class="visualizer-bar" style="--i:3;"></div>
+                        <div class="visualizer-bar" style="--i:4;"></div>
+                        <div class="visualizer-bar" style="--i:5;"></div>
+                        <div class="visualizer-bar" style="--i:6;"></div>
+                        <div class="visualizer-bar" style="--i:7;"></div>
+                    </div>
+                </div>
+                
+                <div class="music-player">
+                    <h3>Neon Nights</h3>
+                    <div class="custom-audio-player">
+                        <audio class="audio-element" preload="metadata">
+                            <source src="Assets/Neon Nights.wav" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="player-controls">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <div class="timeline-container">
+                                <div class="timeline">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time">
+                                    <span class="current">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visualizer">
+                        <div class="visualizer-bar" style="--i:0;"></div>
+                        <div class="visualizer-bar" style="--i:1;"></div>
+                        <div class="visualizer-bar" style="--i:2;"></div>
+                        <div class="visualizer-bar" style="--i:3;"></div>
+                        <div class="visualizer-bar" style="--i:4;"></div>
+                        <div class="visualizer-bar" style="--i:5;"></div>
+                        <div class="visualizer-bar" style="--i:6;"></div>
+                        <div class="visualizer-bar" style="--i:7;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="web">
+        <div class="floating-shapes">
+            <div class="shape square large direction-2" style="top: 20%; left: 8%;"></div>
+            <div class="shape circle small direction-3 hollow" style="top: 70%; left: 15%;"></div>
+            <div class="shape triangle medium direction-1" style="top: 15%; left: 70%;"></div>
+            <div class="shape square small direction-3 hollow" style="top: 60%; left: 80%;"></div>
+            <div class="shape circle medium direction-2" style="top: 35%; left: 50%;"></div>
+            <div class="shape square medium direction-4 hollow" style="top: 10%; left: 30%;"></div>
+            <div class="shape circle large direction-5" style="top: 45%; left: 5%;"></div>
+            <div class="shape triangle small direction-4 hollow" style="top: 25%; left: 60%;"></div>
+            <div class="shape square large direction-5" style="top: 80%; left: 40%;"></div>
+            <div class="shape circle medium direction-4 hollow" style="top: 50%; left: 90%;"></div>
+            <div class="shape triangle large direction-5" style="top: 5%; left: 45%;"></div>
+            <div class="shape square small direction-4 hollow" style="top: 65%; left: 25%;"></div>
+            <div class="shape circle small direction-5" style="top: 30%; left: 75%;"></div>
+            <div class="shape triangle medium direction-4 hollow" style="top: 85%; left: 55%;"></div>
+            <div class="shape square medium direction-5" style="top: 40%; left: 20%;"></div>
+            <div class="shape circle large direction-3 hollow" style="top: 75%; left: 65%;"></div>
+            <div class="shape triangle small direction-2" style="top: 15%; left: 95%;"></div>
+            <div class="shape square large direction-1" style="top: 55%; left: 35%;"></div>
+            <div class="shape circle medium direction-3" style="top: 90%; left: 10%;"></div>
+            <div class="shape triangle large direction-2 hollow" style="top: 25%; left: 85%;"></div>
+        </div>
+        <div class="container">
+            <h2>Web Projects</h2>
+            <div class="projects-grid">
+                <a href="https://www.heraisprojects.com" target="_blank" class="web-card-link">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="Assets/Total Solutions.png" alt="Web Project 1" class="project-image">
+                            <h3>Herais Projects</h3>
+                            <p class="project-description">HERAIS offers international design and product solutions for laboratory, medical, and commercial environments. Specializing in laboratory casework, fume hoods, medical furniture, and rehabilitation equipment with the latest technology.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" target="_blank" class="web-card-link">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="Assets/Healthcare.png" alt="Web Project 2" class="project-image">
+                            <h3>Herais Healthcare</h3>
+                            <p class="project-description">HERAIS Health Care is a leading Canadian supplier of healthcare products, rehabilitation equipment, and medical consumables, backed by over 15 years of industry expertise. An ISO & SEFA certified group. FDA & CE approved.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Game Development</h3>
+                    <p>Complete game development from concept to release. Specializing in horror and narrative-driven experiences with immersive gameplay mechanics.</p>
+                    <ul class="service-features">
+                        <li>Custom gameplay mechanics</li>
+                        <li>PSX Character & level design</li>
+                        <li>Game optimization</li>
+                        <li>one to one mentorship and tutoring</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music Production</h3>
+                    <p>Original soundtracks and audio design for games, media, and commercial projects. Creating atmospheric and emotionally resonant compositions.</p>
+                    <ul class="service-features">
+                        <li>Game soundtracks</li>
+                        <li>Sound effects design</li>
+                        <li>Voice-over processing</li>
+                        <li>Adaptive audio systems</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Modern, responsive websites with clean code and intuitive user interfaces. Focused on performance and accessibility.</p>
+                    <ul class="service-features">
+                        <li>Responsive design</li>
+                        <li>Interactive elements</li>
+                        <li>Portfolio websites</li>
+                        <li>E-commerce solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Digital Art</h3>
+                    <p>Custom pixel art and game assets. Creating visually striking and cohesive visual styles for your projects.</p>
+                    <ul class="service-features">
+                        <li>Character design</li>
+                        <li>Environment art</li>
+                        <li>Pixel art & sprites</li>
+                        <li>UI/UX design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="floating-shapes">
+            <div class="shape square medium direction-3" style="top: 15%; left: 12%;"></div>
+            <div class="shape circle large direction-1 hollow" style="top: 65%; left: 8%;"></div>
+            <div class="shape triangle small direction-2" style="top: 20%; left: 85%;"></div>
+            <div class="shape square small direction-1 hollow" style="top: 70%; left: 75%;"></div>
+            <div class="shape circle medium direction-2" style="top: 40%; left: 60%;"></div>
+            <div class="shape square large direction-4 hollow" style="top: 5%; left: 25%;"></div>
+            <div class="shape circle small direction-5" style="top: 55%; left: 30%;"></div>
+            <div class="shape triangle medium direction-4 hollow" style="top: 35%; left: 70%;"></div>
+            <div class="shape square medium direction-5" style="top: 80%; left: 15%;"></div>
+            <div class="shape circle large direction-4 hollow" style="top: 25%; left: 45%;"></div>
+            <div class="shape triangle small direction-5" style="top: 60%; left: 90%;"></div>
+            <div class="shape square small direction-4" style="top: 10%; left: 55%;"></div>
+            <div class="shape circle medium direction-5" style="top: 75%; left: 40%;"></div>
+            <div class="shape triangle large direction-4 hollow" style="top: 30%; left: 5%;"></div>
+            <div class="shape square large direction-5" style="top: 50%; left: 80%;"></div>
+            <div class="shape circle small direction-3" style="top: 85%; left: 65%;"></div>
+            <div class="shape triangle medium direction-2" style="top: 45%; left: 20%;"></div>
+            <div class="shape square medium direction-1 hollow" style="top: 95%; left: 50%;"></div>
+            <div class="shape circle large direction-3" style="top: 15%; left: 35%;"></div>
+            <div class="shape triangle small direction-2 hollow" style="top: 70%; left: 95%;"></div>
+        </div>
+        <div class="container">
+            <form action="https://formspree.io/f/manqgrdp" method="POST" class="new-contact-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer no-snap">
+        <div class="container">
+            <p class="copyright">© 2025 Ali (WaffleAWT). All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/WaffleAWT" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://waffleawt.itch.io" target="_blank" class="social-link">
+                    <i class="fab fa-itch-io"></i>
+                </a>
+                <a href="https://discord.gg/sahJj245CC" target="_blank" class="social-link">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.youtube.com/@waffleawt-production" target="_blank" class="social-link">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('nav ul');
+            const overlay = document.querySelector('.overlay');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            function toggleMenu() {
+                navMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            }
+            
+            function closeMenu() {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+            
+            menuToggle.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', closeMenu);
+            
+            // Close menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Close menu when clicking outside or on escape key
+            document.addEventListener('click', function(e) {
+                if (navMenu.classList.contains('active') && 
+                    !navMenu.contains(e.target) && 
+                    !menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active navigation based on scroll position
+            const sections = document.querySelectorAll('section');
+            
+            function setActiveNavItem() {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', setActiveNavItem);
+            
+            // Fix for iOS Safari 100vh issue
+            function setVhVariable() {
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            setVhVariable();
+            window.addEventListener('resize', setVhVariable);
+            window.addEventListener('orientationchange', setVhVariable);
+        });
+    </script>
+</body>
+</html>
