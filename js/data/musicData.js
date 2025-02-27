@@ -4,23 +4,23 @@ const musicData = {
     tracks: [
         {
             title: "Inside Khyos",
-            audioSrc: "Assets/Inside Khyos.wav",
-            type: "audio/mpeg"
+            audioSource: "Assets/Inside Khyos.wav",
+            type: "audio/wav"
         },
         {
             title: "Broken Bonds",
-            audioSrc: "Assets/Broken Bonds.wav",
-            type: "audio/mpeg"
+            audioSource: "Assets/Broken Bonds.wav",
+            type: "audio/wav"
         },
         {
             title: "Fairooz Fusion",
-            audioSrc: "Assets/Fairooz Fusion.wav",
-            type: "audio/mpeg"
+            audioSource: "Assets/Fairooz Fusion.wav",
+            type: "audio/wav"
         },
         {
             title: "Neon Nights",
-            audioSrc: "Assets/Neon Nights.wav",
-            type: "audio/mpeg"
+            audioSource: "Assets/Neon Nights.wav",
+            type: "audio/wav"
         }
     ],
     visualizerBars: 8

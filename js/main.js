@@ -9,7 +9,8 @@ import {
     contactData, 
     navData, 
     homeData, 
-    shapesData 
+    shapesData,
+    footerData
 } from './data/index.js';
 
 import { initAllShapes } from './utils/shapeGenerator.js';
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         toolsData, 
         contactData, 
         navData, 
-        homeData
+        homeData,
+        footerData
     });
     
     // Initialize all shapes
@@ -84,10 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                document.querySelectorAll('nav a').forEach(a => {
-                    a.classList.remove('active');
-                    if (a.getAttribute('href').substring(1) === entry.target.id) {
-                        a.classList.add('active');
+                const id = entry.target.getAttribute('id');
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
                     }
                 });
             }
@@ -98,120 +101,70 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
     
-    // Music visualizer animation
+    // Music visualizer animation - Initial state only
     const visualizers = document.querySelectorAll('.visualizer');
     visualizers.forEach(visualizer => {
         visualizer.querySelectorAll('.visualizer-bar').forEach(bar => {
-            bar.style.height = Math.random() * 100 + '%';
+            bar.style.height = Math.random() * 30 + 15 + '%';
         });
     });
 
-    // Custom Audio Player Functionality
-    const players = document.querySelectorAll('.custom-audio-player');
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+    const overlay = document.querySelector('.overlay');
     
-    players.forEach(player => {
-        const audio = player.querySelector('.audio-element');
-        const playBtn = player.querySelector('.play-btn');
-        const playIcon = playBtn.querySelector('i');
-        const timeline = player.querySelector('.timeline');
-        const progress = player.querySelector('.progress');
-        const currentTime = player.querySelector('.current');
-        const duration = player.querySelector('.duration');
-        const visualizer = player.parentElement.querySelector('.visualizer');
-        const visualizerBars = visualizer.querySelectorAll('.visualizer-bar');
-        
-        // Format time in minutes and seconds
-        const formatTime = (seconds) => {
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = Math.floor(seconds % 60);
-            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-        };
-        
-        // Update progress bar and time display
-        const updateProgress = () => {
-            const percent = (audio.currentTime / audio.duration) * 100;
-            progress.style.width = `${percent}%`;
-            currentTime.textContent = formatTime(audio.currentTime);
+    if (menuToggle && navMenu && overlay) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
             
-            // Animate visualizer bars when playing
-            if (!audio.paused) {
-                visualizerBars.forEach(bar => {
-                    const randomHeight = 15 + Math.random() * 85;
-                    bar.style.height = `${randomHeight}%`;
-                });
+            // Toggle icon
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
-        };
-        
-        // Set up event listeners
-        audio.addEventListener('loadedmetadata', () => {
-            duration.textContent = formatTime(audio.duration);
         });
         
-        audio.addEventListener('timeupdate', updateProgress);
-        
-        audio.addEventListener('ended', () => {
-            playIcon.className = 'fas fa-play';
-            progress.style.width = '0%';
-            currentTime.textContent = '0:00';
+        // Close menu when clicking on overlay
+        overlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
             
-            // Reset visualizer bars
-            visualizerBars.forEach(bar => {
-                bar.style.height = '15%';
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+        
+        // Close menu when clicking on a nav link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             });
         });
-        
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                // Pause all other audio elements first
-                document.querySelectorAll('.audio-element').forEach(a => {
-                    if (a !== audio && !a.paused) {
-                        a.pause();
-                        const otherPlayBtn = a.closest('.custom-audio-player').querySelector('.play-btn i');
-                        otherPlayBtn.className = 'fas fa-play';
-                    }
-                });
-                
-                audio.play();
-                playIcon.className = 'fas fa-pause';
-            } else {
-                audio.pause();
-                playIcon.className = 'fas fa-play';
-                
-                // Reset visualizer bars
-                visualizerBars.forEach(bar => {
-                    bar.style.height = '15%';
-                });
-            }
-        });
-        
-        timeline.addEventListener('click', (e) => {
-            const timelineWidth = timeline.clientWidth;
-            const clickPosition = e.offsetX;
-            const clickPercent = (clickPosition / timelineWidth);
-            const seekTime = clickPercent * audio.duration;
-            
-            audio.currentTime = seekTime;
-        });
-    });
+    }
 
     // Formspree form handling
     const contactForm = document.querySelector('.new-contact-form');
-    
     if (contactForm) {
-        // Create success message element
-        const successMessage = document.createElement('div');
-        successMessage.className = 'form-success';
-        successMessage.innerHTML = '<p>Thank you for your message! I\'ll get back to you soon.</p>';
-        contactForm.parentNode.insertBefore(successMessage, contactForm.nextSibling);
-        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const form = e.target;
-            const formData = new FormData(form);
-            const formAction = form.getAttribute('action');
+            const formData = new FormData(contactForm);
+            const formAction = contactForm.getAttribute('action');
             
-            // Submit form data to Formspree
             fetch(formAction, {
                 method: 'POST',
                 body: formData,
@@ -222,22 +175,23 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => {
                 if (response.ok) {
                     // Show success message
-                    form.reset();
-                    successMessage.classList.add('visible');
+                    const formSuccess = document.querySelector('.form-success');
+                    formSuccess.classList.add('visible');
+                    
+                    // Reset form
+                    contactForm.reset();
                     
                     // Hide success message after 5 seconds
                     setTimeout(() => {
-                        successMessage.classList.remove('visible');
+                        formSuccess.classList.remove('visible');
                     }, 5000);
-                    
-                    return response.json();
                 } else {
                     throw new Error('Form submission failed');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Oops! There was a problem submitting your form. Please try again later.');
+                alert('There was a problem submitting your form. Please try again later.');
             });
         });
     }

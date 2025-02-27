@@ -1,0 +1,36 @@
+/* CSS Variables */
+:root {
+    /* Color scheme */
+    --primary: #121212;
+    --secondary: #1a1a1a;
+    --accent: #00ff9d;
+    --accent-dark: #00cc7d;
+    --text: #ffffff;
+    --text-secondary: #b3b3b3;
+    
+    /* Aliases for footer styles */
+    --dark-bg: var(--secondary);
+    --text-light: var(--text);
+    --text-muted: var(--text-secondary);
+    --accent-color: var(--accent);
+    
+    /* Spacing */
+    --section-padding: 5rem 0;
+    --container-padding: 0 2rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Shadows */
+    --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --shadow-large: 0 10px 30px rgba(0, 0, 0, 0.4);
+    
+    /* Border radius */
+    --radius-small: 5px;
+    --radius-medium: 10px;
+    --radius-large: 20px;
+    --radius-circle: 50%;
+} 

@@ -1,212 +1,180 @@
-/* Custom Audio Player Styles */
+/* Audio Player Styles */
+
+/* Hide default audio controls */
 audio {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    width: 100%;
-}
-
-audio::-webkit-media-controls {
-    background-color: transparent;
-}
-
-audio::-webkit-media-controls-enclosure {
-    background-color: rgba(26, 26, 26, 0.6);
-    border-radius: 30px;
-    padding: 0;
-    border: 1px solid rgba(0, 255, 157, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-audio::-webkit-media-controls-panel {
-    background-color: transparent;
-    padding: 0 10px;
-}
-
-audio::-webkit-media-controls-play-button {
-    background-color: var(--accent);
-    border-radius: 50%;
-    transform: scale(1.2);
-}
-
-audio::-webkit-media-controls-timeline {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    height: 4px;
-    margin: 0 10px;
-}
-
-audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
-    background-color: var(--accent);
-}
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-    color: var(--text);
-    font-size: 12px;
-}
-
-audio::-webkit-media-controls-volume-slider {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 0;
-}
-
-audio::-webkit-media-controls-mute-button {
-    background-color: transparent;
-}
-
-/* Custom Audio Player */
-.custom-audio-player {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.audio-element {
     display: none;
 }
 
+/* Custom audio player container */
+.custom-audio-player {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+/* Player controls */
 .player-controls {
     display: flex;
     align-items: center;
+    gap: 1rem;
     width: 100%;
-    gap: 15px;
-    background-color: rgba(26, 26, 26, 0.6);
-    border-radius: 30px;
-    padding: 8px 15px;
-    border: 1px solid rgba(0, 255, 157, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Play button */
 .play-btn {
-    background-color: var(--accent);
-    color: var(--primary);
-    border: none;
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border: none;
+    color: var(--primary);
+    font-size: 1.2rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
     flex-shrink: 0;
-    transition: all 0.2s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
-    padding: 0;
-    line-height: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.play-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.play-btn:active::after {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.3;
+    transition: 0s;
 }
 
 .play-btn i {
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
     position: relative;
-    left: 1px;
+    z-index: 2;
+    transition: all 0.3s ease;
+    margin-left: 3px; /* Slight adjustment for play icon */
 }
 
 .play-btn i.fa-pause {
-    left: 0;
+    margin-left: 0; /* Reset for pause icon */
 }
 
 .play-btn:hover {
-    background-color: var(--accent-dark);
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 255, 157, 0.4);
 }
 
+/* Timeline container */
 .timeline-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
+/* Timeline/progress bar */
 .timeline {
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
     position: relative;
     cursor: pointer;
     overflow: hidden;
 }
 
 .progress {
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
     width: 0;
-    background-color: var(--accent);
-    border-radius: 2px;
     transition: width 0.1s linear;
+    position: relative;
 }
 
+.progress::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 255, 157, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.timeline:hover .progress::after {
+    opacity: 1;
+}
+
+/* Time display */
 .time {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
-/* Responsive Custom Audio Player */
+/* Responsive adjustments */
 @media (max-width: 1024px) {
     .custom-audio-player {
-        width: 100%;
+        gap: 0.8rem;
     }
 }
 
 @media (max-width: 768px) {
     .player-controls {
-        padding: 6px 12px;
-        gap: 12px;
-        border-radius: 25px;
+        gap: 0.8rem;
     }
     
     .play-btn {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .play-btn i {
-        font-size: 12px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
     
     .time {
-        font-size: 11px;
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .player-controls {
-        padding: 5px 10px;
-        gap: 10px;
-        border-radius: 20px;
+        gap: 0.6rem;
     }
     
     .play-btn {
-        width: 28px;
-        height: 28px;
-    }
-    
-    .play-btn i {
-        font-size: 11px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
     .timeline {
-        height: 3px;
+        height: 4px;
     }
     
     .time {
-        font-size: 10px;
+        font-size: 0.7rem;
     }
     
     .timeline-container {
-        gap: 3px;
+        gap: 0.3rem;
     }
 } 

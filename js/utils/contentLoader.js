@@ -112,46 +112,272 @@ export function loadMusicContent(data) {
         musicSection.insertBefore(titleElement, contentContainer);
     }
     
-    // Create the content HTML
-    const contentHTML = `
-        <div class="music-players">
-            ${data.tracks.map(track => `
-                <div class="music-player">
-                    <div class="visualizer">
-                        ${Array(data.visualizerBars).fill().map(() => `
-                            <div class="visualizer-bar"></div>
-                        `).join('')}
-                    </div>
-                    <div class="player-container">
-                        <div class="custom-audio-player">
-                            <audio class="audio-element">
-                                <source src="${track.audioSource}" type="${track.type}">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <div class="player-controls">
-                                <button class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </button>
-                                <div class="timeline">
-                                    <div class="progress"></div>
-                                </div>
-                                <div class="time">
-                                    <span class="current">0:00</span>
-                                    <span class="duration">0:00</span>
-                                </div>
-                            </div>
-                            <div class="track-info">
-                                <h3>${track.title}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-    `;
+    // Clear existing content
+    contentContainer.innerHTML = '';
     
-    // Set the content
-    contentContainer.innerHTML = contentHTML;
+    // Create container
+    const musicContainer = document.createElement('div');
+    musicContainer.className = 'music-container';
+    contentContainer.appendChild(musicContainer);
+    
+    // Create music players
+    data.tracks.forEach(track => {
+        // Create music player container
+        const musicPlayer = document.createElement('div');
+        musicPlayer.className = 'music-player';
+        
+        // Add title
+        const title = document.createElement('h3');
+        title.textContent = track.title;
+        musicPlayer.appendChild(title);
+        
+        // Create player container
+        const playerContainer = document.createElement('div');
+        playerContainer.className = 'player-container';
+        
+        // Create custom audio player
+        const customAudioPlayer = document.createElement('div');
+        customAudioPlayer.className = 'custom-audio-player';
+        
+        // Create audio element with direct src
+        const audio = document.createElement('audio');
+        audio.className = 'audio-element';
+        audio.preload = 'metadata';
+        audio.src = track.audioSource; // Set src directly
+        
+        // Add fallback text
+        audio.textContent = 'Your browser does not support the audio element.';
+        
+        // Create player controls
+        const playerControls = document.createElement('div');
+        playerControls.className = 'player-controls';
+        
+        // Create play button
+        const playBtn = document.createElement('button');
+        playBtn.className = 'play-btn';
+        playBtn.setAttribute('aria-label', `Play ${track.title}`);
+        
+        // Create play icon
+        const playIcon = document.createElement('i');
+        playIcon.className = 'fas fa-play';
+        playBtn.appendChild(playIcon);
+        
+        // Create timeline container
+        const timelineContainer = document.createElement('div');
+        timelineContainer.className = 'timeline-container';
+        
+        // Create timeline
+        const timeline = document.createElement('div');
+        timeline.className = 'timeline';
+        
+        // Create progress
+        const progress = document.createElement('div');
+        progress.className = 'progress';
+        timeline.appendChild(progress);
+        
+        // Create time display
+        const timeDisplay = document.createElement('div');
+        timeDisplay.className = 'time';
+        
+        // Create current time
+        const currentTime = document.createElement('span');
+        currentTime.className = 'current';
+        currentTime.textContent = '0:00';
+        
+        // Create duration
+        const duration = document.createElement('span');
+        duration.className = 'duration';
+        duration.textContent = '0:00';
+        
+        // Assemble time display
+        timeDisplay.appendChild(currentTime);
+        timeDisplay.appendChild(duration);
+        
+        // Assemble timeline container
+        timelineContainer.appendChild(timeline);
+        timelineContainer.appendChild(timeDisplay);
+        
+        // Assemble player controls
+        playerControls.appendChild(playBtn);
+        playerControls.appendChild(timelineContainer);
+        
+        // Assemble custom audio player
+        customAudioPlayer.appendChild(audio);
+        customAudioPlayer.appendChild(playerControls);
+        
+        // Assemble player container
+        playerContainer.appendChild(customAudioPlayer);
+        
+        // Create visualizer
+        const visualizer = document.createElement('div');
+        visualizer.className = 'visualizer';
+        
+        // Create visualizer bars
+        for (let i = 0; i < data.visualizerBars; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'visualizer-bar';
+            bar.style.setProperty('--i', i);
+            visualizer.appendChild(bar);
+        }
+        
+        // Assemble music player
+        musicPlayer.appendChild(title);
+        musicPlayer.appendChild(playerContainer);
+        musicPlayer.appendChild(visualizer);
+        
+        // Add to container
+        musicContainer.appendChild(musicPlayer);
+    });
+    
+    // Initialize audio players after they're added to the DOM
+    setTimeout(() => {
+        initAudioPlayers(musicSection);
+    }, 100);
+}
+
+/**
+ * Initializes audio players with event listeners
+ * @param {HTMLElement} container - The container element with audio players
+ */
+function initAudioPlayers(container) {
+    const players = container.querySelectorAll('.custom-audio-player');
+    
+    players.forEach(player => {
+        const audio = player.querySelector('.audio-element');
+        const playBtn = player.querySelector('.play-btn');
+        const playIcon = playBtn.querySelector('i');
+        const timeline = player.querySelector('.timeline');
+        const progress = player.querySelector('.progress');
+        const currentTime = player.querySelector('.current');
+        const duration = player.querySelector('.duration');
+        const musicPlayer = player.closest('.music-player');
+        const visualizer = musicPlayer.querySelector('.visualizer');
+        const visualizerBars = visualizer.querySelectorAll('.visualizer-bar');
+        
+        // Set crossOrigin to anonymous to avoid CORS issues
+        audio.crossOrigin = "anonymous";
+        
+        // Force load the audio metadata
+        audio.load();
+        
+        // Format time in minutes and seconds
+        const formatTime = (seconds) => {
+            if (isNaN(seconds) || seconds === Infinity) return '0:00';
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        };
+        
+        // Update progress bar and time display
+        const updateProgress = () => {
+            if (isNaN(audio.duration)) return;
+            
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${percent}%`;
+            currentTime.textContent = formatTime(audio.currentTime);
+            
+            // Animate visualizer bars when playing
+            if (!audio.paused) {
+                visualizerBars.forEach(bar => {
+                    const randomHeight = 15 + Math.random() * 85;
+                    bar.style.height = `${randomHeight}%`;
+                });
+            }
+        };
+        
+        // Set up event listeners
+        audio.addEventListener('loadedmetadata', () => {
+            console.log('Audio metadata loaded:', audio.src);
+            duration.textContent = formatTime(audio.duration);
+        });
+        
+        audio.addEventListener('timeupdate', updateProgress);
+        
+        audio.addEventListener('ended', () => {
+            playIcon.className = 'fas fa-play';
+            progress.style.width = '0%';
+            currentTime.textContent = '0:00';
+            
+            // Reset visualizer bars
+            visualizerBars.forEach(bar => {
+                bar.style.height = '15%';
+            });
+        });
+        
+        // Log any errors that occur during audio loading or playback
+        audio.addEventListener('error', (e) => {
+            console.error('Audio error:', e);
+            console.error('Audio error code:', audio.error ? audio.error.code : 'unknown');
+            console.error('Audio source:', audio.src);
+        });
+        
+        // Direct play button click handler
+        playBtn.onclick = function() {
+            console.log('Play button clicked directly');
+            
+            if (audio.paused) {
+                // Pause all other audio elements first
+                document.querySelectorAll('.audio-element').forEach(a => {
+                    if (a !== audio && !a.paused) {
+                        a.pause();
+                        const otherPlayBtn = a.closest('.custom-audio-player').querySelector('.play-btn i');
+                        otherPlayBtn.className = 'fas fa-play';
+                    }
+                });
+                
+                // Try to play the audio
+                console.log('Attempting to play:', audio.src);
+                
+                try {
+                    // First, try to load the audio again
+                    audio.load();
+                    
+                    // Then play after a short delay
+                    setTimeout(() => {
+                        const playPromise = audio.play();
+                        
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                console.log('Audio playback started successfully');
+                                playIcon.className = 'fas fa-pause';
+                            }).catch(error => {
+                                console.error('Audio playback failed:', error);
+                                playIcon.className = 'fas fa-play';
+                                
+                                // Try a different approach for autoplay restrictions
+                                alert('Please click play again to start audio playback. Some browsers require user interaction before playing audio.');
+                            });
+                        }
+                    }, 100);
+                } catch (error) {
+                    console.error('Error playing audio:', error);
+                }
+            } else {
+                console.log('Pausing audio');
+                audio.pause();
+                playIcon.className = 'fas fa-play';
+                
+                // Reset visualizer bars
+                visualizerBars.forEach(bar => {
+                    bar.style.height = '15%';
+                });
+            }
+            
+            return false; // Prevent default
+        };
+        
+        // Timeline click handler
+        timeline.addEventListener('click', (e) => {
+            if (isNaN(audio.duration)) return;
+            
+            const timelineWidth = timeline.clientWidth;
+            const clickPosition = e.offsetX;
+            const clickPercent = (clickPosition / timelineWidth);
+            const seekTime = clickPercent * audio.duration;
+            
+            audio.currentTime = seekTime;
+        });
+    });
 }
 
 /**

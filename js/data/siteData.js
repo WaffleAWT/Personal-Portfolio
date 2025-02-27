@@ -18,6 +18,11 @@ const siteData = {
             icon: "fab fa-itch-io"
         },
         {
+            name: "Spotify",
+            url: "https://open.spotify.com/artist/5GsLX8FUmc1JmJf9ente7x",
+            icon: "fab fa-spotify"
+        },
+        {
             name: "Discord",
             url: "https://discord.gg/sahJj245CC",
             icon: "fab fa-discord"

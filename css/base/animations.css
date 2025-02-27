@@ -1,0 +1,107 @@
+/* Animation Styles */
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+    from { 
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease forwards;
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+    from { 
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease forwards;
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+    from { 
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.5s ease forwards;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotate {
+    animation: rotate 10s linear infinite;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+/* Staggered animations for multiple elements */
+.stagger-fade > * {
+    opacity: 0;
+}
+
+.stagger-fade > *:nth-child(1) { animation: fadeIn 0.5s ease forwards 0.1s; }
+.stagger-fade > *:nth-child(2) { animation: fadeIn 0.5s ease forwards 0.2s; }
+.stagger-fade > *:nth-child(3) { animation: fadeIn 0.5s ease forwards 0.3s; }
+.stagger-fade > *:nth-child(4) { animation: fadeIn 0.5s ease forwards 0.4s; }
+.stagger-fade > *:nth-child(5) { animation: fadeIn 0.5s ease forwards 0.5s; }
+.stagger-fade > *:nth-child(6) { animation: fadeIn 0.5s ease forwards 0.6s; }
+.stagger-fade > *:nth-child(7) { animation: fadeIn 0.5s ease forwards 0.7s; }
+.stagger-fade > *:nth-child(8) { animation: fadeIn 0.5s ease forwards 0.8s; }
+.stagger-fade > *:nth-child(9) { animation: fadeIn 0.5s ease forwards 0.9s; }
+.stagger-fade > *:nth-child(10) { animation: fadeIn 0.5s ease forwards 1s; } 
